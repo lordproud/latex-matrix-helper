@@ -1,0 +1,51 @@
+{
+	"name": "latex-matrix-helper",
+	"displayName": "Matrix helper for Latex",
+	"version": "0.0.1",
+	"publisher": "lordproud",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lordproud/something"
+	},
+	"bugs": {
+		"url": "https://github.com/lordproud/something/issues"
+	},
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "latex",
+				"aliases": [
+					"LaTeX",
+					"latex"
+				],
+				"extensions": [
+					".tex",
+					".ltx"
+				]
+			}
+		]
+	},
+	"main": "./out/extension.js",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^10.12.18",
+		"@types/vscode": "^1.32.0",
+		"source-map-support": "*",
+		"tslint": "^5.16.0",
+		"typescript": "^3.5.1"
+	}
+}
