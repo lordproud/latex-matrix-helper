@@ -5,10 +5,10 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	let provider = vscode.languages.registerCompletionItemProvider('*', {
+	let provider = vscode.languages.registerCompletionItemProvider('tex', {
 		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
 			const line = document.lineAt(position).text.substr(0, position.character);
-			const rgxp = /(qm|bm|Bm|vm|pm|mm|m)(\d+)|(x)|(\d+)/;
+			const rgxp = /(qm|bm|Bm|vm|pm|mm|m)(\d+)(x)(\d+)/;
 			const res = line.match(rgxp);
 			if (!res) {
 				return undefined;
