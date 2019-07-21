@@ -31,6 +31,19 @@
 					".tex",
 					".ltx"
 				]
+			},
+			{
+				"id": "tex",
+				"aliases": [
+					"TeX",
+					"tex"
+				],
+				"extensions": [
+					".sty",
+					".cls",
+					".bbx",
+					".cbx"
+				]
 			}
 		]
 	},
@@ -44,8 +57,9 @@
 	"devDependencies": {
 		"@types/node": "^10.12.18",
 		"@types/vscode": "^1.32.0",
-		"source-map-support": "*",
+		"source-map-support": "^0.5.12",
 		"tslint": "^5.16.0",
-		"typescript": "^3.5.1"
+		"typescript": "^3.5.1",
+		"vscode": "^1.1.35"
 	}
 }

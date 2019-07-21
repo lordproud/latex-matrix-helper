@@ -2,11 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
 function activate(context) {
-    let provider = vscode.languages.registerCompletionItemProvider('tex', {
-        provideCompletionItems(document, position) {
-            const line = document.lineAt(position).text.substr(0, position.character);
+    let provider1 = vscode.languages.registerCompletionItemProvider([
+        { scheme: 'file', language: 'latex' },
+        { scheme: 'file', language: 'tex' }
+    ], {
+        provideCompletionItems(document, position, token, context) {
+            let linePrefix = document.lineAt(position).text.substr(0, position.character);
             const rgxp = /(qm|bm|Bm|vm|pm|mm|m)(\d+)(x)(\d+)/;
-            const res = line.match(rgxp);
+            const res = linePrefix.match(rgxp);
             if (!res) {
                 return undefined;
             }
@@ -46,7 +49,7 @@ function activate(context) {
             ];
         }
     });
-    context.subscriptions.push(provider);
+    context.subscriptions.push(provider1);
 }
 exports.activate = activate;
 //# sourceMappingURL=extension.js.map

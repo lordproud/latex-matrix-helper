@@ -5,11 +5,13 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	let provider = vscode.languages.registerCompletionItemProvider('tex', {
-		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-			const line = document.lineAt(position).text.substr(0, position.character);
+	let provider1 = vscode.languages.registerCompletionItemProvider([
+		{ scheme: 'file', language: 'latex'},
+		{ scheme: 'file', language: 'tex'}], {
+		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+			let linePrefix = document.lineAt(position).text.substr(0, position.character);
 			const rgxp = /(qm|bm|Bm|vm|pm|mm|m)(\d+)(x)(\d+)/;
-			const res = line.match(rgxp);
+			const res = linePrefix.match(rgxp);
 			if (!res) {
 				return undefined;
 			}
@@ -53,6 +55,6 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 
-	context.subscriptions.push(provider);
+	context.subscriptions.push(provider1);
 
 }
