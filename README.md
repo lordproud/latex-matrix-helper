@@ -3,4 +3,4 @@
 Smart snippets for creating matrix
 
 
-	
+![](matrix.gif)
